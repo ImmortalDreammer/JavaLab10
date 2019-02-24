@@ -5,12 +5,12 @@ public class Manager {
     public static double calculateRevenue(Pizza [] pizzas){
         double revenue = 0.0;
         for (Pizza pizza:pizzas) {
-            revenue += pizza.price;
+            revenue += pizza.getPrice();
         }
         return revenue;
     }
 
     public static void setCallCenterSalary(PizzaShop pizzaShop, double revenue){
-        pizzaShop.callCenterM1.salary = revenue/(2 * pizzaShop.callCenterM1.category);
+        pizzaShop.callCenterM1.setSalary(revenue/(2 * pizzaShop.callCenterM1.getCategory()));
     }
 }

@@ -21,7 +21,7 @@ public class Lab10 {
         pizzaShop.setPizzaSize(pizzas,Pizza.pizzaAmount);
         pizzaShop.callCenterM1.calculatePizzasCost(pizzas);
 
-        pizzaShop.callCenterM1.acceptedOrders = Pizza.pizzaAmount;
+        pizzaShop.callCenterM1.setAcceptedOrders(Pizza.pizzaAmount);
         double revenue = Manager.calculateRevenue(pizzas);
         Manager.setCallCenterSalary(pizzaShop,revenue);
 

@@ -2,14 +2,16 @@ package by.bntu.fitr.povt.woradreamteam.model.entity;
 
 public class Pizza {
     public static int pizzaAmount;
+    private static final String DEFAULT_DOUGH = "thin";
+    private static final String DEFAULT_SIZE = "small";
 
-    public String name;
-    public String ingredients;
-    public String dough;
-    public String size;
-    public boolean spicy;
-    public boolean vegaterian;
-    public double price;
+    private String name;
+    private String ingredients;
+    private String dough;
+    private String size;
+    private boolean spicy;
+    private boolean vegeterian;
+    private double price;
 
     static {
         pizzaAmount = 0;
@@ -20,10 +22,10 @@ public class Pizza {
     public Pizza(){
         name = "";
         ingredients = "";
-        dough = "thin";
-        size = "small";
+        dough = DEFAULT_DOUGH;
+        size = DEFAULT_SIZE;
         spicy = false;
-        vegaterian = false;
+        vegeterian = false;
         price = 0.0;
     }
 
@@ -34,7 +36,7 @@ public class Pizza {
         this.dough = dough;
         this.size = size;
         this.spicy = spicy;
-        this.vegaterian = vegaterian;
+        this.vegeterian = vegaterian;
         this.price = price;
     }
 
@@ -45,14 +47,54 @@ public class Pizza {
         dough = pizza.dough;
         size = pizza.size;
         spicy = pizza.spicy;
-        vegaterian = pizza.vegaterian;
+        vegeterian = pizza.vegeterian;
         price = pizza.price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public String getDough() {
+        return dough;
+    }
+
+    public void setDough(String dough) {
+        this.dough = dough;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     @Override
     public String toString(){
         return name + " (" + ingredients + ") " + "dough: " + dough + "  size: " + size + "  spicy: " + spicy +
-                "  vegatarian: " + vegaterian + "\n" + "Price: " + price;
+                "  vegatarian: " + vegeterian + "\n" + "Price: " + price;
     }
 
 
