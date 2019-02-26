@@ -1,6 +1,8 @@
 package by.bntu.fitr.povt.woradreamteam.model.entity;
 
 import by.bntu.fitr.povt.woradreamteam.model.logic.CallCenter;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 public class PizzaShop {
@@ -40,59 +42,64 @@ public class PizzaShop {
     }
 
     public PizzaShop(PizzaShop pizzaShop){
-        name = pizzaShop.name;
-        callCenterM1= pizzaShop.callCenterM1;
+        this.name = pizzaShop.name;
+        this.callCenterM1= pizzaShop.callCenterM1;
        // callCenterM2 = pizzaShop.callCenterM2;
     }
 
-    public void setPizzaName(Pizza [] pizzas, final int PIZZA_AMOUNT){
+    public void setPizzaName(ArrayList<Pizza> pizzas){
         String[] pizzaNames = {"Hawaii","French","Meet","Vegetable","Mexican"};
         Random random = new Random();
         int pizzaNameChoice;
-        for(int i = 0; i < PIZZA_AMOUNT;i++){
+        for (Pizza pizza:pizzas
+             ) {
             pizzaNameChoice = random.nextInt(pizzaNames.length - 1);
-            pizzas[i].setName(pizzaNames[pizzaNameChoice]);
+            pizza.setName(pizzaNames[pizzaNameChoice]);
         }
     }
-    public void setPizzaIngredientsAndBasicCost(Pizza [] pizzas, final int PIZZA_AMOUNT){
-        for(int i = 0; i < PIZZA_AMOUNT;i++){
-            switch (pizzas[i].getName()){
+
+    public void setPizzaIngredientsAndBasicCost(ArrayList<Pizza> pizzas){
+        for (Pizza pizza :pizzas
+             ) {
+            switch (pizza.getName()){
                 case "Hawaii":
-                    pizzas[i].setIngredients(HAWAII_INGREDIENTS);
-                    pizzas[i].setPrice(DEFAULT_HAWAII_PRICE);break;
+                    pizza.setIngredients(HAWAII_INGREDIENTS);
+                    pizza.setPrice(DEFAULT_HAWAII_PRICE);break;
                 case "French":
-                    pizzas[i].setIngredients(FRENCH_INGREDIENTS);
-                    pizzas[i].setPrice(DEFAULT_FRENCH_PRICE);break;
+                    pizza.setIngredients(FRENCH_INGREDIENTS);
+                    pizza.setPrice(DEFAULT_FRENCH_PRICE);break;
                 case "Meet":
-                    pizzas[i].setIngredients(MEET_INGREDIENTS);
-                    pizzas[i].setPrice(DEFAULT_MEET_PRICE);break;
+                    pizza.setIngredients(MEET_INGREDIENTS);
+                    pizza.setPrice(DEFAULT_MEET_PRICE);break;
                 case "Vegetable":
-                    pizzas[i].setIngredients(VEGETABLE_INGREDIENTS);
-                   // pizzas[i]. = true;
-                    pizzas[i].setPrice(DEFAULT_VEGETABLE_PRICE);break;
+                    pizza.setIngredients(VEGETABLE_INGREDIENTS);
+                    // pizzas[i]. = true;
+                    pizza.setPrice(DEFAULT_VEGETABLE_PRICE);break;
                 case "Mexican":
-                    pizzas[i].setIngredients(MEXICAL_INGREDIENTS);
-                  //  pizzas[i]. = true;
-                    pizzas[i].setPrice(DEFAULT_MEXICAN_PRICE);break;
+                    pizza.setIngredients(MEXICAL_INGREDIENTS);
+                    //  pizzas[i]. = true;
+                    pizza.setPrice(DEFAULT_MEXICAN_PRICE);break;
             }
         }
     }
-    public void setPizzaDough(Pizza [] pizzas, int pizzaAmount){
+    public void setPizzaDough(ArrayList<Pizza> pizzas){
         String[] pizzaDough = {"lush","thin"};
         Random random = new Random();
         int pizzaDoughChoice;
-        for(int i = 0; i < pizzaAmount;i++){
+        for (Pizza pizza:pizzas
+             ) {
             pizzaDoughChoice = random.nextInt(pizzaDough.length - 1);
-            pizzas[i].setName(pizzaDough[pizzaDoughChoice]);
+            pizza.setName(pizzaDough[pizzaDoughChoice]);
         }
     }
-    public void setPizzaSize(Pizza [] pizzas, int pizzaAmount){
+    public void setPizzaSize(ArrayList<Pizza> pizzas){
         String[] pizzaSize = {"small","middle","big"};
         Random random = new Random();
         int pizzaSizeChoice;
-        for(int i = 0; i < pizzaAmount;i++){
+        for (Pizza pizza:pizzas
+             ) {
             pizzaSizeChoice = random.nextInt(pizzaSize.length - 1);
-            pizzas[i].setName(pizzaSize[pizzaSizeChoice]);
+            pizza.setName(pizzaSize[pizzaSizeChoice]);
         }
     }
     @Override

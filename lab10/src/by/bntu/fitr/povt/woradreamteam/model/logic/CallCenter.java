@@ -2,6 +2,8 @@ package by.bntu.fitr.povt.woradreamteam.model.logic;
 
 import by.bntu.fitr.povt.woradreamteam.model.entity.Pizza;
 
+import java.util.ArrayList;
+
 public class CallCenter {
     private static final int CATEGORY = 2;
     private static final String WORKING_HOURS = "8:00 - 19:00";
@@ -14,6 +16,7 @@ public class CallCenter {
     private String workingHours;
     private int acceptedOrders;
     private double salary;
+
 
     public CallCenter() {
         name = "";
@@ -39,7 +42,7 @@ public class CallCenter {
         salary = callCenter.salary;
     }
 
-    public boolean acceptOrder(Pizza[] acceptedPizzas, Pizza [] pizzas){
+   /* public boolean acceptOrder(Pizza[] acceptedPizzas, Pizza... pizzas){
         for(int i = 0; i < acceptedPizzas.length;i++){
             for(int j = 0; j< pizzas.length;j++){
                 if(acceptedPizzas[i].getName().equals(pizzas[j].getName())){
@@ -48,52 +51,68 @@ public class CallCenter {
             }
         }
         return false;
-    }
-    public void calculatePizzasCost(Pizza [] pizzas){
+    }*/
+
+    public void calculatePizzasCost(ArrayList<Pizza> pizzas){
         double tempPrice;
-        for(int i = 0; i < pizzas.length;i++){
-            tempPrice = pizzas[i].getPrice();
-            switch (pizzas[i].getSize()){
+        for (Pizza pizza:pizzas
+             ) {
+            tempPrice = pizza.getPrice();
+            switch (pizza.getSize()){
                 case "middle":
-                    pizzas[i].setPrice(tempPrice *= INDEX_SIZE_MIDDLE);break;
+                    pizza.setPrice(tempPrice *= INDEX_SIZE_MIDDLE);break;
                 case "big":
-                    pizzas[i].setPrice(tempPrice *= INDEX_SIZE_BIG);break;
+                    pizza.setPrice(tempPrice *= INDEX_SIZE_BIG);break;
             }
-            if (pizzas[i].getDough().equals("lush")){
-                pizzas[i].setPrice(tempPrice += INDEX_SIZE_DOUGH);
+            if (pizza.getDough().equals("lush")){
+                pizza.setPrice(tempPrice += INDEX_SIZE_DOUGH);
             }
         }
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public int getCategory() {
+    public int getCategory()
+    {
         return category;
     }
 
-    public void setCategory(int category) {
-        this.category = category;
+    public void setCategory(int category)
+    {
+        if(category > 0){
+            this.category = category;
+        }
     }
 
-    public double getSalary() {
+    public double getSalary()
+    {
         return salary;
     }
 
-    public void setSalary(double salary) {
-        this.salary = salary;
+    public void setSalary(double salary)
+    {
+        if(salary >= 0){
+            this.salary = salary;
+        }
     }
 
-    public void setAcceptedOrders(int acceptedOrders) {
-        this.acceptedOrders = acceptedOrders;
+    public void setAcceptedOrders(int acceptedOrders)
+    {
+        if(acceptedOrders >= 0){
+            this.acceptedOrders = acceptedOrders;
+        }
     }
 
-    public int getAcceptedOrders() {
+    public int getAcceptedOrders()
+    {
         return acceptedOrders;
     }
 
@@ -101,6 +120,6 @@ public class CallCenter {
     public String toString() {
         return "Call Center Manager: " + name + "\n" + "category:" + category + "\n" +
                 "working hours: " + workingHours + "\n" + "accepted orders: " + acceptedOrders +
-                "\n" + "salary: " + salary + "\n";
+                "\n" + "daily revenue: " + salary + "\n";
     }
 }

@@ -13,9 +13,6 @@ public class Pizza {
     private boolean vegeterian;
     private double price;
 
-    static {
-        pizzaAmount = 0;
-    }
     {
         pizzaAmount++;
     }
@@ -88,7 +85,10 @@ public class Pizza {
     }
 
     public void setPrice(double price) {
-        this.price = price;
+
+        if(price >= 0){
+            this.price = price;
+        }
     }
 
     @Override

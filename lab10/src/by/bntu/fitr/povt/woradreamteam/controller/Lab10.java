@@ -1,6 +1,7 @@
 package by.bntu.fitr.povt.woradreamteam.controller;
 import by.bntu.fitr.povt.woradreamteam.model.entity.Pizza;
 import by.bntu.fitr.povt.woradreamteam.model.entity.PizzaShop;
+import by.bntu.fitr.povt.woradreamteam.model.logic.Basket;
 import by.bntu.fitr.povt.woradreamteam.model.logic.Manager;
 import by.bntu.fitr.povt.woradreamteam.view.Printer;
 import java.util.Random;
@@ -8,24 +9,28 @@ import java.util.Random;
 public class Lab10 {
     public static void main(String[] args) {
         PizzaShop pizzaShop = new PizzaShop("Hamster");
+        Basket basket = new Basket();
+
+        final int MAX_VALUE_FOR_RANDOM = basket.getMaxCapacity();
         Random random = new Random();
-        //final int PIZZA_AMOUNT = random.nextInt(200);
-        Pizza[] pizzas = new Pizza[random.nextInt(6000)];
+        Pizza[] pizzas = new Pizza[random.nextInt(MAX_VALUE_FOR_RANDOM)];
         for (int i = 0; i<pizzas.length;i++){
             pizzas[i] = new Pizza();
         }
-       //Printer.Print(pizzas[0].toString());
-        pizzaShop.setPizzaName(pizzas,Pizza.pizzaAmount);
-        pizzaShop.setPizzaIngredientsAndBasicCost(pizzas,Pizza.pizzaAmount);
-        pizzaShop.setPizzaDough(pizzas,Pizza.pizzaAmount);
-        pizzaShop.setPizzaSize(pizzas,Pizza.pizzaAmount);
-        pizzaShop.callCenterM1.calculatePizzasCost(pizzas);
+        basket.fillTheContainer(pizzas);
+
+
+        pizzaShop.setPizzaName(basket.getPizzasContainer());
+        pizzaShop.setPizzaIngredientsAndBasicCost(basket.getPizzasContainer());
+        pizzaShop.setPizzaDough(basket.getPizzasContainer());
+        pizzaShop.setPizzaSize(basket.getPizzasContainer());
+        pizzaShop.callCenterM1.calculatePizzasCost(basket.getPizzasContainer());
 
         pizzaShop.callCenterM1.setAcceptedOrders(Pizza.pizzaAmount);
-        double revenue = Manager.calculateRevenue(pizzas);
+        double revenue = Manager.calculateRevenue(basket.getPizzasContainer());
         Manager.setCallCenterSalary(pizzaShop,revenue);
 
         Printer.Print(pizzaShop.toString());
-        Printer.Print("Number of orders per month is:\n" + Pizza.pizzaAmount);
+        Printer.Print("Number of pizzas in basket is:\n" + Pizza.pizzaAmount);
     }
 }
