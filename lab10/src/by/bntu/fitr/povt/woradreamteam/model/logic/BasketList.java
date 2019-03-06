@@ -6,26 +6,27 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.ArrayList;
 
-public class Basket {
+public class BasketList {
     private static final int MAX_CAPACITY = 100;
     private int orderNumber;
     private int maxCapacity;
     private ArrayList<Pizza> pizzasContainer = new ArrayList<Pizza>();
 
-    public Basket(){
+    public BasketList(){
         Random random = new Random();
         orderNumber = random.nextInt();
         maxCapacity = MAX_CAPACITY;
     }
 
-    public Basket(int orderNumber, int maxCapacity){
+    public BasketList(int orderNumber, int maxCapacity){
         this.orderNumber = orderNumber;
         this.maxCapacity = maxCapacity;
     }
 
-    public Basket(Basket basket){
+    public BasketList(BasketList basket){
         this.maxCapacity = basket.maxCapacity;
         this.orderNumber = basket.orderNumber;
+        this.pizzasContainer = basket.pizzasContainer;
     }
 
     public void fillTheContainer(Pizza... pizzas){
@@ -50,6 +51,7 @@ public class Basket {
         for (Pizza pizza:pizzasContainer) {
             if(pizza.getName().equals(name)) {
                 pizzas[counter] = pizza;
+                counter++;
             }
         }
         return pizzas;

@@ -6,7 +6,7 @@ public class Pizza {
     private static final String DEFAULT_SIZE = "small";
 
     private String name;
-    private String ingredients;
+    private String[] ingredients;
     private String dough;
     private String size;
     private boolean spicy;
@@ -18,7 +18,7 @@ public class Pizza {
     }
     public Pizza(){
         name = "";
-        ingredients = "";
+        ingredients = null;
         dough = DEFAULT_DOUGH;
         size = DEFAULT_SIZE;
         spicy = false;
@@ -26,8 +26,8 @@ public class Pizza {
         price = 0.0;
     }
 
-    public Pizza(String name, String ingredients, String dough, String size, boolean spicy, boolean vegaterian,
-                 double price){
+    public Pizza(String name, String dough, String size, boolean spicy, boolean vegaterian,
+                 double price, String... ingredients){
         this.name = name;
         this.ingredients = ingredients;
         this.dough = dough;
@@ -56,11 +56,11 @@ public class Pizza {
         this.name = name;
     }
 
-    public String getIngredients() {
+    public String[] getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(String ingredients) {
+    public void setIngredients(String... ingredients) {
         this.ingredients = ingredients;
     }
 

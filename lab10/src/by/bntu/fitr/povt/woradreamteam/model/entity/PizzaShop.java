@@ -1,6 +1,7 @@
 package by.bntu.fitr.povt.woradreamteam.model.entity;
 
 import by.bntu.fitr.povt.woradreamteam.model.logic.CallCenter;
+import static by.bntu.fitr.povt.woradreamteam.model.data.PizzaConstants.*;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -10,23 +11,20 @@ public class PizzaShop {
     //public static final int DEFAULT_CALLCENTER_MANAGERS_AMOUNT = 2;
     private static final String CALL_CENTER_MANAGER_NAME = "Vladimir";
     private static final int CATEGORY = 2;
-    private static final String WORKING_HOURS = "9:00 - 19:00";
-    private static final double DEFAULT_HAWAII_PRICE = 6;
-    private static final double DEFAULT_FRENCH_PRICE = 6.50;
-    private static final double DEFAULT_MEET_PRICE = 5.50;
-    private static final double DEFAULT_VEGETABLE_PRICE = 6;
-    private static final double DEFAULT_MEXICAN_PRICE = 7;
-    private static final String HAWAII_INGREDIENTS = "Ham, chicken, pineapples, cheese, spices, mayo";
-    private static final String FRENCH_INGREDIENTS = "Chicken, mushrooms, onion, cheese, spices, mayo";
-    private static final String MEET_INGREDIENTS = "Pepperoni, ham, beef, pork, cheese, spices, mayo";
-    private static final String VEGETABLE_INGREDIENTS = "Mushrooms, pepper, tomatoes, onion, cheese," +
-        "olives, spices, mayo";
-    private static final String MEXICAL_INGREDIENTS = "Chicken, mushrooms, pepper, tomatoes, onion, " +
-            "jalapeno, cheese, spices, mayo";
+    private static final String START_HOURS = "9:00";
+    private static final String ENDING_HOURS = "19:00";
+    private static final char SEPARATOR = '/';
+
+    private String [] HawaiiIngredients = {HAM,CHICKEN,PINEAPPLES,CHEESE,SPICES,MAYO};
+    private String [] FrenchIngredients = {CHICKEN,MUSHROOMS,ONION,CHEESE,SPICES,MAYO};
+    private String [] MeetIngredients = {PEPPERONI,HAM,BEEF,PORK,CHEESE,SPICES,MAYO};
+    private String [] VegetableIngredients = {MUSHROOMS,PEPPER,TOMATOES,ONION,CHEESE,OLIVES,SPICES,MAYO};
+    private String [] MexicoIngredients = {CHICKEN,MUSHROOMS,PEPPER,TOMATOES,ONION,JALAPENO,CHEESE,SPICES,MAYO};
 
     private String name;
-    public CallCenter callCenterM1 = new CallCenter(CALL_CENTER_MANAGER_NAME,CATEGORY,WORKING_HOURS,
-            0,0.0);
+    private Random random = new Random();
+    public CallCenter callCenterM1 = new CallCenter(CALL_CENTER_MANAGER_NAME,CATEGORY,START_HOURS +
+            SEPARATOR + ENDING_HOURS, 0,0.0);
 
     public PizzaShop(){
 
@@ -48,8 +46,7 @@ public class PizzaShop {
     }
 
     public void setPizzaName(ArrayList<Pizza> pizzas){
-        String[] pizzaNames = {"Hawaii","French","Meet","Vegetable","Mexican"};
-        Random random = new Random();
+        String[] pizzaNames = {HAWAII,FRENCH,MEET,VEGETABLE,MEXICAN};
         int pizzaNameChoice;
         for (Pizza pizza:pizzas
              ) {
@@ -62,29 +59,28 @@ public class PizzaShop {
         for (Pizza pizza :pizzas
              ) {
             switch (pizza.getName()){
-                case "Hawaii":
-                    pizza.setIngredients(HAWAII_INGREDIENTS);
+                case HAWAII:
+                    pizza.setIngredients(HawaiiIngredients);
                     pizza.setPrice(DEFAULT_HAWAII_PRICE);break;
-                case "French":
-                    pizza.setIngredients(FRENCH_INGREDIENTS);
+                case FRENCH:
+                    pizza.setIngredients(FrenchIngredients);
                     pizza.setPrice(DEFAULT_FRENCH_PRICE);break;
-                case "Meet":
-                    pizza.setIngredients(MEET_INGREDIENTS);
+                case MEET:
+                    pizza.setIngredients(MeetIngredients);
                     pizza.setPrice(DEFAULT_MEET_PRICE);break;
-                case "Vegetable":
-                    pizza.setIngredients(VEGETABLE_INGREDIENTS);
+                case VEGETABLE:
+                    pizza.setIngredients(VegetableIngredients);
                     // pizzas[i]. = true;
                     pizza.setPrice(DEFAULT_VEGETABLE_PRICE);break;
-                case "Mexican":
-                    pizza.setIngredients(MEXICAL_INGREDIENTS);
+                case MEXICAN:
+                    pizza.setIngredients(MexicoIngredients);
                     //  pizzas[i]. = true;
                     pizza.setPrice(DEFAULT_MEXICAN_PRICE);break;
             }
         }
     }
     public void setPizzaDough(ArrayList<Pizza> pizzas){
-        String[] pizzaDough = {"lush","thin"};
-        Random random = new Random();
+        String[] pizzaDough = {LUSH_DOUGH,THIN_DOUGH};
         int pizzaDoughChoice;
         for (Pizza pizza:pizzas
              ) {
@@ -93,8 +89,7 @@ public class PizzaShop {
         }
     }
     public void setPizzaSize(ArrayList<Pizza> pizzas){
-        String[] pizzaSize = {"small","middle","big"};
-        Random random = new Random();
+        String[] pizzaSize = {SMALL_SIZE,MIDDLE_SIZE,BIG_SIZE};
         int pizzaSizeChoice;
         for (Pizza pizza:pizzas
              ) {

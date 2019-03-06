@@ -1,19 +1,19 @@
 package by.bntu.fitr.povt.woradreamteam.controller;
 import by.bntu.fitr.povt.woradreamteam.model.entity.Pizza;
 import by.bntu.fitr.povt.woradreamteam.model.entity.PizzaShop;
-import by.bntu.fitr.povt.woradreamteam.model.logic.Basket;
+import by.bntu.fitr.povt.woradreamteam.model.logic.BasketList;
 import by.bntu.fitr.povt.woradreamteam.model.logic.Manager;
 import by.bntu.fitr.povt.woradreamteam.view.Printer;
 import java.util.Random;
 
 public class Lab10 {
+
     public static void main(String[] args) {
         PizzaShop pizzaShop = new PizzaShop("Hamster");
-        Basket basket = new Basket();
+        BasketList basket = new BasketList();
 
         final int MAX_VALUE_FOR_RANDOM = basket.getMaxCapacity();
-        Random random = new Random();
-        Pizza[] pizzas = new Pizza[random.nextInt(MAX_VALUE_FOR_RANDOM)];
+        Pizza[] pizzas = new Pizza[new Random().nextInt(MAX_VALUE_FOR_RANDOM)];
         for (int i = 0; i<pizzas.length;i++){
             pizzas[i] = new Pizza();
         }
