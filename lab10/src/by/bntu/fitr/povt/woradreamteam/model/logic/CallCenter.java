@@ -1,6 +1,7 @@
 package by.bntu.fitr.povt.woradreamteam.model.logic;
 
 import by.bntu.fitr.povt.woradreamteam.model.entity.Pizza;
+import static by.bntu.fitr.povt.woradreamteam.model.data.PizzaConstants.*;
 
 import java.util.ArrayList;
 
@@ -19,11 +20,8 @@ public class CallCenter {
 
 
     public CallCenter() {
-        name = "";
         category = CATEGORY;
         workingHours = WORKING_HOURS;
-        acceptedOrders = 0;
-        salary = 0;
     }
 
     public CallCenter(String name, int category, String workingHours, int acceptedOrders, double salary) {
@@ -35,11 +33,11 @@ public class CallCenter {
     }
 
     public CallCenter(CallCenter callCenter) {
-        name = callCenter.name;
-        category = callCenter.category;
-        workingHours = callCenter.workingHours;
-        acceptedOrders = callCenter.acceptedOrders;
-        salary = callCenter.salary;
+        this.name = callCenter.name;
+        this.category = callCenter.category;
+        this.workingHours = callCenter.workingHours;
+        this.acceptedOrders = callCenter.acceptedOrders;
+        this.salary = callCenter.salary;
     }
 
    /* public boolean acceptOrder(Pizza[] acceptedPizzas, Pizza... pizzas){
@@ -53,18 +51,18 @@ public class CallCenter {
         return false;
     }*/
 
-    public void calculatePizzasCost(ArrayList<Pizza> pizzas){
+    public void calculatePizzasCost(BasketArray pizzas){
         double tempPrice;
-        for (Pizza pizza:pizzas
+        for (Pizza pizza:pizzas.getPizzasContainer()
              ) {
             tempPrice = pizza.getPrice();
             switch (pizza.getSize()){
-                case "middle":
+                case MIDDLE_SIZE:
                     pizza.setPrice(tempPrice *= INDEX_SIZE_MIDDLE);break;
-                case "big":
+                case BIG_SIZE:
                     pizza.setPrice(tempPrice *= INDEX_SIZE_BIG);break;
             }
-            if (pizza.getDough().equals("lush")){
+            if (pizza.getDough().equals(LUSH_DOUGH)){
                 pizza.setPrice(tempPrice += INDEX_SIZE_DOUGH);
             }
         }
@@ -118,8 +116,8 @@ public class CallCenter {
 
     @Override
     public String toString() {
-        return "Call Center Manager: " + name + "\n" + "category:" + category + "\n" +
+        return "You are served by manager: " + name + "\n" + "category:" + category + "\n" +
                 "working hours: " + workingHours + "\n" + "accepted orders: " + acceptedOrders +
-                "\n" + "daily revenue: " + salary + "\n";
+                "\n" + "daily revenue: " + salary + "$\n";
     }
 }

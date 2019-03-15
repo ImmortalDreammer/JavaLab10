@@ -10,42 +10,37 @@ public class Pizza {
     private String dough;
     private String size;
     private boolean spicy;
-    private boolean vegeterian;
+    private boolean vegetarian;
     private double price;
 
     {
         pizzaAmount++;
     }
     public Pizza(){
-        name = "";
-        ingredients = null;
         dough = DEFAULT_DOUGH;
         size = DEFAULT_SIZE;
-        spicy = false;
-        vegeterian = false;
-        price = 0.0;
     }
 
-    public Pizza(String name, String dough, String size, boolean spicy, boolean vegaterian,
+    public Pizza(String name, String dough, String size, boolean spicy, boolean vegetarian,
                  double price, String... ingredients){
         this.name = name;
         this.ingredients = ingredients;
         this.dough = dough;
         this.size = size;
         this.spicy = spicy;
-        this.vegeterian = vegaterian;
+        this.vegetarian = vegetarian;
         this.price = price;
     }
 
     //copy-constructor
     public Pizza(Pizza pizza){
-        name = pizza.name;
-        ingredients = pizza.ingredients;
-        dough = pizza.dough;
-        size = pizza.size;
-        spicy = pizza.spicy;
-        vegeterian = pizza.vegeterian;
-        price = pizza.price;
+        this.name = pizza.name;
+        this.ingredients = pizza.ingredients;
+        this.dough = pizza.dough;
+        this.size = pizza.size;
+        this.spicy = pizza.spicy;
+        this.vegetarian = pizza.vegetarian;
+        this.price = pizza.price;
     }
 
     public String getName() {
@@ -72,6 +67,22 @@ public class Pizza {
         this.dough = dough;
     }
 
+    public void setVegetarian(boolean vegetarian) {
+        this.vegetarian = vegetarian;
+    }
+
+    public boolean isVegetarian() {
+        return vegetarian;
+    }
+
+    public void setSpicy(boolean spicy){
+        this.spicy = spicy;
+    }
+
+    public boolean isSpicy(){
+        return spicy;
+    }
+
     public String getSize() {
         return size;
     }
@@ -91,10 +102,18 @@ public class Pizza {
         }
     }
 
+    public StringBuilder getIngredientsToString(){
+        StringBuilder listOfIngredients = new StringBuilder();
+        for (String ingredient: ingredients) {
+            listOfIngredients.append(ingredient);
+        }
+        return listOfIngredients;
+    }
+
     @Override
     public String toString(){
-        return name + " (" + ingredients + ") " + "dough: " + dough + "  size: " + size + "  spicy: " + spicy +
-                "  vegatarian: " + vegeterian + "\n" + "Price: " + price;
+        return name + " (" + getIngredientsToString() + ") " + "dough: " + dough + "  size: " + size + "  spicy: " + spicy +
+                "  vegetarian: " + vegetarian + "\n" + "Price: " + price;
     }
 
 

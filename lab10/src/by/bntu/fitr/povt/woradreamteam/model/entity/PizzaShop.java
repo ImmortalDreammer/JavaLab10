@@ -23,7 +23,7 @@ public class PizzaShop {
 
     private String name;
     private Random random = new Random();
-    public CallCenter callCenterM1 = new CallCenter(CALL_CENTER_MANAGER_NAME,CATEGORY,START_HOURS +
+    public CallCenter callCenterManager1 = new CallCenter(CALL_CENTER_MANAGER_NAME,CATEGORY,START_HOURS +
             SEPARATOR + ENDING_HOURS, 0,0.0);
 
     public PizzaShop(){
@@ -36,16 +36,16 @@ public class PizzaShop {
 
     public PizzaShop(String name, CallCenter manager1){
         this.name = name;
-        callCenterM1 = manager1;
+        callCenterManager1 = manager1;
     }
 
     public PizzaShop(PizzaShop pizzaShop){
         this.name = pizzaShop.name;
-        this.callCenterM1= pizzaShop.callCenterM1;
+        this.callCenterManager1= pizzaShop.callCenterManager1;
        // callCenterM2 = pizzaShop.callCenterM2;
     }
 
-    public void setPizzaName(ArrayList<Pizza> pizzas){
+    public void setPizzaName(Pizza... pizzas){
         String[] pizzaNames = {HAWAII,FRENCH,MEET,VEGETABLE,MEXICAN};
         int pizzaNameChoice;
         for (Pizza pizza:pizzas
@@ -55,7 +55,7 @@ public class PizzaShop {
         }
     }
 
-    public void setPizzaIngredientsAndBasicCost(ArrayList<Pizza> pizzas){
+    public void setPizzaIngredientsAndBasicCost(Pizza... pizzas){
         for (Pizza pizza :pizzas
              ) {
             switch (pizza.getName()){
@@ -79,7 +79,7 @@ public class PizzaShop {
             }
         }
     }
-    public void setPizzaDough(ArrayList<Pizza> pizzas){
+    public void setPizzaDough(Pizza... pizzas){
         String[] pizzaDough = {LUSH_DOUGH,THIN_DOUGH};
         int pizzaDoughChoice;
         for (Pizza pizza:pizzas
@@ -88,7 +88,7 @@ public class PizzaShop {
             pizza.setName(pizzaDough[pizzaDoughChoice]);
         }
     }
-    public void setPizzaSize(ArrayList<Pizza> pizzas){
+    public void setPizzaSize(Pizza... pizzas){
         String[] pizzaSize = {SMALL_SIZE,MIDDLE_SIZE,BIG_SIZE};
         int pizzaSizeChoice;
         for (Pizza pizza:pizzas
@@ -99,6 +99,6 @@ public class PizzaShop {
     }
     @Override
     public String toString(){
-        return "PizzaShop: " + name + "\n" + callCenterM1+ "\n" /*+ callCenterM2 + "\n"*/;
+        return "PizzaShop: " + name + "\n" + callCenterManager1+ "\n";
     }
 }

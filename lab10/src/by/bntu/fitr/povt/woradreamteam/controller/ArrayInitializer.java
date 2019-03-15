@@ -8,4 +8,13 @@ public class ArrayInitializer {
             array[i] = random.nextDouble() + random.nextInt(max - min + 1) + min;
         }
     }
+
+    public static void fillTheMatrix(int[][]matrix, int min, int max){
+        Random random = new Random();
+        for (int i = 0; i<matrix.length;i++) {
+            for(int j = 0; j<matrix[i].length;j++){
+                matrix[i][j] = random.nextInt(max - min + 1) + min;
+            }
+        }
+    }
 }

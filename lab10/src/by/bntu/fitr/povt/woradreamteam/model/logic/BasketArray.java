@@ -8,7 +8,7 @@ public class BasketArray {
     private static final int MAX_CAPACITY = 100;
     private int orderNumber;
     private int maxCapacity;
-    private Pizza [] pizzasContainer = new Pizza[Pizza.pizzaAmount];
+    private Pizza [] pizzasContainer;
 
     public BasketArray(){
         Random random = new Random();
@@ -28,7 +28,8 @@ public class BasketArray {
     }
 
     public void fillTheContainer(Pizza... pizzas){
-        for(int i =0; i< pizzas.length;i++) {
+        pizzasContainer = new Pizza[Pizza.pizzaAmount];
+        for(int i =0; i< Pizza.pizzaAmount;i++) {
             pizzasContainer[i] = pizzas[i];
         }
     }

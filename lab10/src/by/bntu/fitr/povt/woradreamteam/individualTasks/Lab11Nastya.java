@@ -1,12 +1,11 @@
 package by.bntu.fitr.povt.woradreamteam.individualTasks;
 
 
-public class Lab11N {
+public class Lab11Nastya {
 
     public double calculateMaxEl(double [] array){
         double max = array[0];
         for (int i = 1; i< array.length; i++) {
-            //System.out.println(array[i] - max);
             if(array[i] > max ){
                 max = array[i];
             }
